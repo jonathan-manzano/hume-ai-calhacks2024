@@ -2,6 +2,7 @@
 import requests
 from SpartanHealth.core.config import settings
 
+
 def analyze_text(text: str):
     headers = {
         "Authorization": f"Bearer {settings.SECRET_KEY}",
