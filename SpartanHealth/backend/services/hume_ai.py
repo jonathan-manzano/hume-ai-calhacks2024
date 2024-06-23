@@ -1,6 +1,6 @@
 # app/services/hume_ai.py
 import requests
-from SpartanHealth.core.config import settings
+from SpartanHealth.backend.core.config import settings
 
 
 def analyze_text(text: str):
