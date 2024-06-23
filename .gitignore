@@ -1,4 +1,4 @@
 .env
 .DS_store
 *.pyc
-__py cache__/
+__pycache__/
