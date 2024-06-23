@@ -3,20 +3,28 @@ import requests
 from SpartanHealth.backend.core.config import settings
 
 
-def analyze_text(text: str):
-    headers = {
-        "Authorization": f"Bearer {settings.SECRET_KEY}",
-        "Content-Type": "application/json"
-    }
+class HumeAIService:
+    def __init__(self):
+        self.api_url = settings.HUME_API_URL
+        self.api_key = settings.HUME_API_KEY
 
-    data = {
-        "texts": [text],
-        "models": ["emotion"]
-    }
+    def analyze_text(self, text: str):
+        headers = {
+            "Authorization": f"Bearer {self.api_key}",
+            "Content-Type": "application/json"
+        }
 
-    response = requests.post(settings.HUME_API_URL, headers=headers, json=data)
+        data = {
+            "texts": [text],
+            "models": ["emotion"]
+        }
 
-    if response.status_code == 200:
-        return response.json()
-    else:
-        response.raise_for_status()
+        response = requests.post(self.api_url, headers=headers, json=data)
+
+        if response.status_code == 200:
+            return response.json()
+        else:
+            response.raise_for_status()
+
+
+hume_ai_service = HumeAIService()
